@@ -1,0 +1,37 @@
+.form{
+    width:100%;
+    height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background-color:white;
+    border-radius:30px;
+    margin-top:8px;
+    margin-bottom:8px;
+}
+.input{
+    width:100%;
+    padding-left:20px;
+    padding-right:20px;
+    /* margin:auto; */
+    height:20px;
+    border-radius:30px;
+    height:30px;
+    border-color:transparent;
+    
+    
+}
+.input:active{
+    outline:0;
+    border-color:transparent;
+}
+.input:focus-visible{
+    outline:0;
+    border-color:transparent;
+}
+.input::placeholder{
+   /* padding-left:20px; */
+   color: #BCBCBC;
+   font-size: 16px;
+line-height: 19px;
+}

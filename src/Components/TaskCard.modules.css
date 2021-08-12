@@ -1,0 +1,20 @@
+.taskcard-wrapper{
+    width: calc(100%-40px);
+    height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background-color:white;
+    border-radius:30px;
+    padding-left:20px;
+    padding-right:20px;
+    margin-top:8px;
+    margin-bottom:8px;
+}
+.input-group{
+    display:flex;
+}
+
+.card-label{
+   padding-left:16px;
+}
