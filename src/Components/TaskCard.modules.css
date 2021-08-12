@@ -18,3 +18,41 @@
 .card-label{
    padding-left:16px;
 }
+.ellipse-container {
+    position: relative;
+    display: inline-block;
+  }
+.ellipse-dropdown {
+    display: none;
+    border-radius: 10px;
+    flex-direction: column;
+    position: absolute;
+    background-color: #fff;
+    padding: 5px 0;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    right: 0;
+    top: 25px;
+    z-index: 1;
+    transition: all 1s ease;
+   
+    }
+  
+  .ellipse-button {
+    text-align: left;
+    background-color: #fff;
+    color: black;
+    padding: 7px 10px;
+    margin: 3px 5px;
+    text-decoration: none;
+    display: block;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .ellipse-button:hover{
+    background-color: #585292;
+    color: #fff;
+  }
