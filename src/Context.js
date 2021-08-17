@@ -5,8 +5,8 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [AllTodos, setAllTodos] = useState([]);
   const [dataError, setError] = useState("");
-  const [totalTodos, setTotalTodos] = useState(0);
-  const [completed, setCompleted] = useState(0);
+  const [totalTodos, setTotalTodos] = useState(10);
+  const [completed, setCompleted] = useState(10);
   const [progressvalue, setProgressvalue] = useState(50);
 
   const dispatchAddEvent = (actionType, payload) => {
@@ -26,11 +26,11 @@ const AppProvider = ({ children }) => {
           if (todo.completed) return acc + 1;
           return acc;
         }, 0);
-        console.log(res.data);
+        // console.log(res.data);
         setCompleted(completedTask);
         setAllTodos(res.data);
         setTotalTodos(res.data.length);
-        setProgressvalue((completedTask / totalTodos) * 100);
+        setProgressvalue(Math.floor((completedTask / totalTodos) * 100));
       })
       .catch((err) => {
         setError({

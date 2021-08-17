@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "./TaskCard.modules.css";
 import ellipse from "../assets/ellipse.svg";
 import axios from "axios";
+import { AppContext } from "../Context";
 
 export default function TaskCard(props) {
   const complete = { props };
-  console.log(complete);
-  // const { refreshData } = useContext(AppContext);
-  // const dispatch = complete.props.completedispatch
-  // console.log(complete)
+  // console.log(complete);
 
   const [checked, setChecked] = useState(complete.props.item.completed);
   const [isShowSelect, setIsShowSelect] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
-  // const [selectname, setSelectName] = useState("All");
+  const [text, setText] =useState(props.item.title);
+  const { fetchAllTodos } = useContext(AppContext);
+  
 
   const handleClicked = () => {
     axios
@@ -23,36 +23,48 @@ export default function TaskCard(props) {
         { headers: { "Content-Type": "application/json" } }
       )
       .then((res) => {
-        console.log(res.data);
+        
         complete.props.fetchAllTodos();
         setChecked(res.data.completed);
       })
       .catch((err) => console.log(err.message));
   };
-  const handleDropDownChange = (e) => {
-    // setSelectName(e.target.value);
+  const handleDelete = (e) => {
     setIsShowSelect(true);
+    axios.delete(`http://localhost:9000/todos/${complete.props.item.id}`)
+    .then(res => {
+        // console.log(res.data)
+        fetchAllTodos()
+    })
+    .catch(err => console.log(err.message))
   };
   const handleEditChange = (e) => {
     setIsEdit(true);
   };
+ 
   const handleEdit = (e) => {
-    setIsEdit(false);
-  };
-  // console.log(props)
+    axios.patch(`http://localhost:9000/todos/${complete.props.item.id}`, 
+    { "title": text }, { headers: { "Content-Type": "application/json" } })
+    .then(res => {
+        console.log(res.data)
+        fetchAllTodos()
+    })
+    .catch(err => console.log(err.message))
+setIsEdit(false)
+    
 
-  // console.log(complete.props.item.completed)
+  };
+  
   return (
     <div className="taskcard-wrapper">
       <div className="input-group">
         {isEdit === true ? (
-          <div
+          <input
             style={{ color: "#2E2E2E" }}
-            className="card-label-edit"
-            contentEditable="true"
-          >
-            {props.item.title}
-          </div>
+            className="input-edit"
+            value={text}
+            onChange={(e)=>setText(e.target.value)}
+          />
         ) : (
           <>
             <input
@@ -67,14 +79,15 @@ export default function TaskCard(props) {
             <div
               onInput={(e) => this.handleInput(e)}
               style={{
-                color: "#2E2E2E",
+                color: complete.props.item.completed
+                ? "#A9A9A9"
+                : "##2E2E2E",
+                
                 textDecoration: complete.props.item.completed
                   ? "line-through"
                   : "",
               }}
               className="card-label"
-              contentEditable="false"
-              defaultValue=""
             >
               {props.item.title}
             </div>
@@ -106,7 +119,7 @@ export default function TaskCard(props) {
               </button>
               <button
                 className="ellipse-button"
-                onClick={handleDropDownChange}
+                onClick={handleDelete}
                 value="Delete"
               >
                 Delete

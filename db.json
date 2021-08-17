@@ -1,39 +1,34 @@
 {
   "todos": [
     {
-      "id": "5fe3f4ca-193c-4170-83c1-cb5a19908601",
-      "title": "Buy food for dinner",
-      "completed": false
-    },
-    {
-      "id": "f619466c-a016-4281-b584-7db2795d103d",
-      "title": "Call Marie at 10.00 PM",
-      "completed": true
-    },
-    {
-      "id": "5fe3f4ca-193c-4170-83c1-cb5a19908602",
-      "title": "Write a react blog post",
-      "completed": false
-    },
-    {
-      "title": "Buy me Rich",
-      "completed": false,
-      "id": "waPgCj_"
-    },
-    {
       "title": "Sleep Early",
       "completed": true,
       "id": "w_Uw-px"
     },
     {
-      "title": "Hello World",
-      "completed": false,
+      "title": "Hello World Cup",
+      "completed": true,
       "id": "YUBC_tR"
     },
     {
-      "title": "Checking whether form works",
+      "title": "Checking whether form works, feels somehow",
       "completed": false,
       "id": "hKZvq6h"
+    },
+    {
+      "title": "Check what was deleted",
+      "completed": false,
+      "id": "PpIwc9U"
+    },
+    {
+      "title": "Todo ist completed, optimization left, need to optmize more",
+      "completed": false,
+      "id": "UCrv1Br"
+    },
+    {
+      "title": "Checking Dispatch",
+      "completed": false,
+      "id": "Mf5laQ1"
     }
   ]
 }

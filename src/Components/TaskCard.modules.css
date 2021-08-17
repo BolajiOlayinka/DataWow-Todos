@@ -1,81 +1,176 @@
-.taskcard-wrapper{
-    width: calc(100%-40px);
-    height:46px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background-color:white;
-    border-radius:30px;
-    padding-left:20px;
-    padding-right:20px;
-    margin-top:8px;
-    margin-bottom:8px;
-}
-.input-group{
-    display:flex;
+.taskcard-wrapper {
+  width: calc(100%-40px);
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
-.card-label{
-   padding-left:16px;
+.input-group {
+  display: flex;
 }
-.card-label-eidt{
-  padding-left:16px;
-  
+
+.card-label {
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
 }
-.card-label-eidt :focus :active{
-  outline:0;
-  border-color:transparent;
-  
+
+.input-edit {
+  padding-left: 16px;
+  width: 400px;
+  height: 40px;
+  border-radius: 16px;
+  border-color: transparent;
+
+
 }
+
+@media(max-width:768px) {
+  .input-edit {
+    width: 200px;
+    margin: auto;
+  }
+
+  .card-label {
+    padding-left: 14px;
+  }
+}
+
+@media(max-width:576px) {
+  .input-edit {
+    width: 200px;
+    margin: auto;
+  }
+
+  .taskcard-wrapper {
+    padding-left: 10px;
+  }
+
+}
+
+@media(max-width:426px) {
+  .input-edit {
+    width: 150px;
+    margin: auto;
+  }
+
+}
+
+.input-edit:focus-visible {
+  outline-width: 0px;
+  border-color: transparent !important;
+}
+
+.card-label-edit :focus :active {
+  outline: 0;
+  border-color: transparent;
+
+}
+
 .ellipse-container {
-    position: relative;
-    display: inline-block;
-  }
+  position: relative;
+  display: inline-block;
+}
+
 .ellipse-dropdown {
-    display: none;
-    border-radius: 10px;
-    flex-direction: column;
-    position: absolute;
-    background-color: #fff;
-    padding: 5px 0;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
-    min-width: 100px;
-    right: 0;
-    top: 25px;
-    z-index: 1;
-    transition: all 1s ease;
-   
-    }
-  
-  .ellipse-button {
-    text-align: left;
-    background-color: #fff;
-    color: black;
-    padding: 7px 10px;
-    margin: 3px 5px;
-    text-decoration: none;
-    display: block;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
+  display: none;
+  border-radius: 10px;
+  flex-direction: column;
+  position: absolute;
+  background-color: #fff;
+  padding: 5px 0;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  min-width: 100px;
+  right: 0;
+  top: 25px;
+  z-index: 1;
+  transition: all 1s ease;
 
-  .ellipse-button:hover{
-    background-color: #585292;
-    color: #fff;
-  }
-  .edit-button{
-    background: #585292;
-    color:white;
-    padding:10px 17px;
-    border-radius:17px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    margin-right:-10px;
-  }
-  .edit-input{
-    width: 100%;
+}
 
-  }
+.ellipse-button {
+  text-align: left;
+  background-color: #fff;
+  color: black;
+  padding: 7px 10px;
+  margin: 3px 5px;
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 18px;
+  /* width: 18px; */
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 5px;
+  border: 2px solid #585292;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+
+}
+
+input[type="checkbox"]::after {
+  content: "\2714";
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  color: #fff;
+  display: none;
+}
+
+input[type="checkbox"]:hover {
+  background-color: #f0f0f0;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #585292;
+  color: #fff;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+input[type="checkbox"]:checked::after {
+  display: block;
+
+}
+
+
+.ellipse-button:hover {
+  background-color: #585292;
+  color: #fff;
+}
+
+.edit-button {
+  background: #585292;
+  color: white;
+  padding: 10px 17px;
+  border-radius: 17px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: -10px;
+}
+
+.edit-input {
+  width: 100%;
+
+}

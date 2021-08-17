@@ -1,7 +1,6 @@
 .App {
   background: #E5E5E5;
-  padding-top:42px;
-  height:100vh;
+  padding-top: 42px;
+  padding-bottom: 63px;
   font-family: 'Roboto', sans-serif;
 }
-

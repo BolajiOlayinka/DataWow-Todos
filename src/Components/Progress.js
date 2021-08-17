@@ -12,15 +12,12 @@ export default function Progress() {
         {(value) => {
           return (
             <>
-              <progress
-                className="progressWrapper"
-                id="progessbar"
-                max="100"
-                value={value.progressvalue}
-              >
-                {" "}
-                70%
-              </progress>
+              <div className="progress-container">
+                <div
+                  className="progress-meter"
+                  style={{ width: `${value.progressvalue}%` }}
+                ></div>
+              </div>
               <div className="subTitle">{value.completed} completed</div>
             </>
           );
