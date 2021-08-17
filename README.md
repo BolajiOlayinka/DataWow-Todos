@@ -17,3 +17,6 @@ There is a db.json folder that serves as the database.
 
 /////////////////////////////////////////////////////////////////////////////////
 
+![img2](https://user-images.githubusercontent.com/47536987/129741708-a75a6cba-e66c-40db-bd4c-85d3e58793ea.png)
+![img1](https://user-images.githubusercontent.com/47536987/129741752-3c7f1ad6-47b5-48d8-8399-eea0eadb91e0.png)
+![img-3](https://user-images.githubusercontent.com/47536987/129741790-42f02846-ac6b-42b9-a6bc-434d326d16ff.png)
