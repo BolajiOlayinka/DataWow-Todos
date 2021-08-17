@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-// import Context from '../Context';
 import "./TaskList.modules.css";
 import Card from "./TaskCard";
 import arrowDown from "../assets/arrow-down.svg";
+import { AppConsumer } from "../Context";
 
-export default function TaskList() {
+export default function TaskList(props) {
   const [isShowSelect, setIsShowSelect] = useState(false);
-  const { selectProgress, setSelectProgress } = useState();
   const [selectname, setSelectName] = useState("All");
   const handleDropDownChange = (e) => {
     setSelectName(e.target.value);
     setIsShowSelect(true);
   };
-  console.log(isShowSelect)
 
   return (
     <div className="tasklist-wrapper">
@@ -21,8 +19,8 @@ export default function TaskList() {
         <div className="task-dropdown">
           <button
             className="dropbtn"
-            onClick={() => setIsShowSelect(!isShowSelect)}>
-            {selectProgress}
+            onClick={() => setIsShowSelect(!isShowSelect)}
+          >
             {selectname}
             <img src={arrowDown} alt="dropdown" style={{ width: "8px" }} />
           </button>
@@ -32,29 +30,64 @@ export default function TaskList() {
             style={{
               display: isShowSelect ? "flex" : "none",
               transition: "all 1s ease",
-            }}>
+            }}
+          >
             <button
               className="select-button"
               onClick={handleDropDownChange}
-              value="All">
+              value="All"
+            >
               All
             </button>
             <button
               className="select-button"
               onClick={handleDropDownChange}
-              value="Done">
+              value="Done"
+            >
               Done
             </button>
             <button
               className="select-button"
               onClick={handleDropDownChange}
-              value="Undone">
+              value="Undone"
+            >
               Undone
             </button>
           </div>
         </div>
       </div>
-      <Card />
+
+      <AppConsumer>
+        {(value) => {
+          const { AllTodos, fetchAllTodos } = value;
+          if (AllTodos === undefined || AllTodos.length === 0) {
+            return <h2>...</h2>;
+          } else {
+            return (
+              <>
+                {AllTodos.filter((todo) => {
+                  switch (selectname) {
+                    case "All":
+                      return true;
+                    case "Done":
+                      return todo.completed;
+                    case "Undone":
+                      return !todo.completed;
+                    default:
+                      return true;
+                  }
+                }).map((item) => (
+                  <Card
+                    item={item}
+                    key={item.id}
+                    fetchAllTodos={fetchAllTodos}
+                  />
+                ))}
+              </>
+            );
+          }
+        }}
+      </AppConsumer>
     </div>
   );
 }

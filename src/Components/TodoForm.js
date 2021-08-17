@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./TodoForm.modules.css";
 
-export default function TodoForm() {
+export default function TodoForm(props) {
+  const item={props}
   const [text, setText] = useState("");
 
   // const handleChange =(event)=>{
@@ -20,6 +21,7 @@ export default function TodoForm() {
     console.log(text)
     //submit the form
   };
+  console.log(item)
   return (
     <form
       onSubmit={(e) => {
