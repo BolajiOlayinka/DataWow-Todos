@@ -1,34 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./TodoForm.modules.css";
+import axios from "axios";
+import { AppContext } from "../Context";
 
 export default function TodoForm(props) {
-  const item={props}
   const [text, setText] = useState("");
+  const { dispatchAddEvent, fetchAllTodos } = useContext(AppContext);
 
-  // const handleChange =(event)=>{
-  //     this.setState({
-  //         [event.target.name]:event.target.value
-  //     })
-  // }
-  const handleSubmit = (e, props) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // props.onSubmit({
-    //   // id:shortid.generate(),
-    //   text: text,
-    //   complete: false,
-    // });
-    // setText({ text });
-    console.log(text)
-    //submit the form
+    axios
+      .post("http://localhost:9000/todos", { title: text, completed: false })
+      .then((res) => {
+        setText("");
+        dispatchAddEvent();
+        fetchAllTodos();
+      })
+      .catch((err) => console.log(err));
   };
-  console.log(item)
   return (
-    <form
-      onSubmit={(e) => {
-        handleSubmit(e);
-      }}
-      className="form"
-    >
+    <form onSubmit={handleSubmit} className="form">
       <input
         className="input"
         name="text"
